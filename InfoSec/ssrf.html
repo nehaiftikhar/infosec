@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>InfoSec — Web Penetration Testing & Security Research</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+    .ssrf-hero {
+  background-image: url('img/ssrf.jpg');
+  background-size: 110%;
+  background-position: center;
+  animation: heroZoom 10s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+  from { background-size: 100%; }
+  to   { background-size: 130%; }
+}
+    </style>
+  </head>
+
+  <body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+      <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+   
+    <div class="container-fluid position-relative p-0">
+      <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0">
+          <h1 class="text-primary"><i></i>INFOSEC</h1>
+          <!-- <img src="img/logo.png" alt="Logo"> -->
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <!-- nav items here -->
+        </div>
+      </nav>
+
+      <!-- Header Start -->
+      <div class="container-fluid bg-breadcrumb ssrf-hero">
+  <div class="container text-center py-5" style="max-width: 900px;">
+    <h4 class="text-white display-4 mb-4 wow fadeInDown " data-wow-delay="0.1s">
+      Server Side Request Forgery
+    </h4>
+  </div>
+</div>
+      <!-- Header End -->
+    </div>
+    <!-- Navbar & Hero End -->
+
+    <!-- SSRF Content Start -->
+    <section class="container py-5 card-hover-section">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <section class="container py-5">
+            <div class="row justify-content-center">
+              <div class="col-lg-10">
+
+                <!-- Introduction to SSRF -->
+                <div class="card mb-4 shadow-sm border-0">
+                  <div class="card-body p-4">
+                    <h2 class="h3 mb-3 text-primary">Introduction to Server-Side Request Forgery</h2>
+                    <p class="mb-0">
+                      Server-Side Request Forgery (SSRF) is a vulnerability where an attacker tricks a web server into making network requests that the 
+                      attacker should not be able to make directly, often to internal or sensitive services. In normal use, an application might fetch 
+                      URLs on behalf of users, for example to generate link previews, download images, or call internal APIs. With SSRF, the attacker 
+                      controls that URL parameter and points it to targets like localhost, internal IP ranges, or cloud metadata endpoints that are 
+                      normally shielded from the outside world.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Consequences of SSRF -->
+                <div class="card mb-4 shadow-sm border-0">
+                  <div class="card-body p-4">
+                    <h2 class="h4 mb-3">Consequences of SSRF Vulnerabilities</h2>
+                    <p class="mb-3">
+                      Server-Side Request Forgery (SSRF) can escalate from “just fetching a URL” to full environment compromise, 
+                      because the vulnerable server becomes a powerful proxy into networks and services an attacker could never reach directly.
+                    </p>
+
+                    <h3 class="h5 mt-3">Access to internal systems</h3>
+                    <p>
+                      When SSRF is exploited, the attacker can reach internal services that are normally firewalled, such as internal APIs, 
+                      databases with HTTP interfaces, admin panels, or cloud metadata endpoints. This often lets them read configuration, credentials, tokens, 
+                      or other sensitive data that then fuels further attacks or persistence.​
+                    </p>
+
+                    <h3 class="h5 mt-3">Data exposure and account takeover</h3>
+                    <p>
+                      By targeting internal endpoints or files, SSRF can leak secrets like API keys, database passwords, and cloud IAM metadata, 
+                      which can then be used to access data stores or customer information. In cloud breaches, attackers have used SSRF to grab IAM credentials from 
+                      metadata services and then list, read, and exfiltrate large volumes of sensitive records from storage buckets.​
+                    </p>
+
+                    <h3 class="h5 mt-3">Network reconnaissance and pivoting</h3>
+                    <p>
+                      Because the server sits inside the network, attackers can use SSRF to perform internal port scanning and service discovery, 
+                      learning which hosts and ports are alive and what tech stack is running. That knowledge lets them chain additional exploits, 
+                      moving laterally from the initial web app into other internal systems that were never exposed to the internet.​
+                    </p>
+
+                    <h3 class="h5 mt-3">Full system compromise</h3>
+                    <p class="mb-0">
+                      In severe cases, SSRF is a stepping stone to remote code execution, for example by hitting internal services that accept URLs, templates, 
+                      or deserialization payloads. If those services execute attacker-controlled input, SSRF can ultimately give shell access or high-privilege code 
+                      execution on internal hosts, turning a “simple” bug into total environment compromise.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Common SSRF Attack Techniques -->
+                <div class="card mb-4 shadow-sm border-0">
+                  <div class="card-body p-4">
+                    <h2 class="h4 mb-3">Common SSRF Attack Techniques</h2>
+                    <p class="mb-3">
+                      Here are the most common ways attackers exploit SSRF:
+                    </p>
+
+                    <h3 class="h5 mt-3">1. Accessing Cloud Metadata Services</h3>
+                    <p>
+                      AWS: <a href="http://169.254.169.254/latest/meta-data/">http://169.254.169.254/latest/meta-data/</a><br>
+                      GCP: <a href="http://169.254.169.254/computeMetadata/v1/">http://169.254.169.254/computeMetadata/v1/</a><br>
+                      Azure: <a href="http://169.254.169.254/metadata/instance">http://169.254.169.254/metadata/instance</a><br>
+                      Used to steal IAM tokens → full cloud account takeover.
+                    </p>
+
+                    <h3 class="h5 mt-3">2. Internal Network Scanning</h3>
+                    <p>
+                      Attackers probe internal IP ranges:<br>
+                      http://127.0.0.1:<br>
+                      http://10.x.x.x:<br>
+                      http://192.168.x.x:<br>
+                      To identify services such as Redis, Memcached, Elasticsearch, Jenkins, etc.
+                    </p>
+
+                    <h3 class="h5 mt-3">3. Exploiting URL Parsers and Protocol Smuggling</h3>
+                    <p>
+                      Examples:<br>
+                      Using file://, gopher://, dict:// to interact with internal services.<br>
+                      Bypassing filters through:<br>
+                      IPv6 localhost: http://[::1]/<br>
+                      Decimal/hex IP encoding: http://2130706433/<br>
+                      Redirect chains to internal IP addresses.
+                    </p>
+
+                    <h3 class="h5 mt-3">4. Hitting Admin Panels or Internal APIs</h3>
+                    <p>
+                      Internal dashboards often lack authentication because they are “internal only,” making SSRF a direct path to:<br>
+                      Admin APIs<br>
+                      Debug interfaces<br>
+                      Monitoring dashboards<br>
+                      Build servers (e.g., Jenkins)
+                    </p>
+
+                    <h3 class="h5 mt-3">5. Triggering Internal Vulnerabilities</h3>
+                    <p>
+                      Using SSRF to reach:<br>
+                      Deserialization endpoints<br>
+                      Template engines<br>
+                      Image processing services<br>
+                      PDF or document renderers<br>
+                      This can escalate SSRF → RCE.
+                    </p>
+
+                    <h3 class="h5 mt-3">6. Blind SSRF to Exfiltration Channels</h3>
+                    <p class="mb-0">
+                      Even when no response is shown, attackers use:<br>
+                      DNS exfiltration<br>
+                      Out-of-band services (Burp Collaborator, Interactsh)<br>
+                      Delays (timing-based detection)<br>
+                      To confirm internal access and extract data covertly.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Bypassing SSRF Defenses -->
+                <div class="card mb-4 shadow-sm border-0">
+                  <div class="card-body p-4">
+                    <h2 class="h4 mb-3">Bypassing SSRF Defenses</h2>
+                    <p class="mb-3">
+                      Bypassing SSRF defenses usually means abusing how the application validates URLs, how libraries parse them, or how DNS and redirects behave, 
+                      so that a payload looks harmless to filters but still reaches internal targets.​
+                    </p>
+
+                    <h3 class="h5 mt-3">Blacklist-based filter bypass</h3>
+                    <p>
+                      When applications block obvious strings like 127.0.0.1, localhost, or admin, attackers try alternative encodings and representations 
+                      that still resolve to the same target. Techniques include using decimal, octal, or hexadecimal IP formats, IPv6 forms, adding extra dots, 
+                      URL-encoding characters, or changing case to sneak blocked substrings past naive string checks.
+                    </p>
+
+                    <h3 class="h5 mt-3">Whitelist, parsing, and redirect tricks</h3>
+                    <p>
+                      If a whitelist only checks for an allowed domain at the beginning or as a substring, an attacker can exploit URL parser quirks, 
+                      for example using <a href="https://allowed.com.evil.com">https://allowed.com.evil.com</a> or credentials-style prefixes to confuse custom validation while the real request goes 
+                      to an attacker-controlled host. Open redirect bugs on whitelisted domains are also abused: the URL first passes validation, 
+                      then the server automatically follows the redirect to an internal or malicious endpoint, effectively bypassing the allowlist.​
+                    </p>
+
+                    <h3 class="h5 mt-3">DNS rebinding and network controls</h3>
+                    <p class="mb-0">
+                      Some defenses resolve the hostname once to ensure it is “external” or not in a private range, but DNS rebinding can change the IP between 
+                      the initial check and the actual request. By serving a domain that first returns a public IP and then quickly rebinds to 127.0.0.1 or 
+                      another internal address, attackers can make the SSRF request hit private services despite IP-based protections.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Out-of-Band SSRF -->
+                <div class="card mb-4 shadow-sm border-0">
+                  <div class="card-body p-4">
+                    <h2 class="h4 mb-3">Out-of-Band SSRF</h2>
+                    <p class="mb-3">
+                      Out-of-Band SSRF (often called blind SSRF with OOB interaction) is a form of SSRF where the attacker never sees the server’s HTTP response directly, 
+                      but still proves and exploits the bug using callbacks to an external system they control.
+                    </p>
+
+                    <h3 class="h5 mt-3">How Out-of-Band SSRF works</h3>
+                    <p class="mb-0">
+                      In a normal SSRF, the attacker sees the response in the browser, so they can read internal pages or metadata immediately.
+                      In Out-of-Band SSRF, the application makes the backend request, but the response is hidden; 
+                      the only evidence is that the server performed some network activity in the background. To confirm the vulnerability, 
+                      the attacker supplies a URL pointing to a domain they control and watches for DNS lookups or HTTP hits on that domain using an 
+                      external interaction service (for example, a Burp Collaborator‑style endpoint).
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Identifying Non-Obvious SSRF Targets -->
+                <div class="card mb-4 shadow-sm border-0">
+                  <div class="card-body p-4">
+                    <h2 class="h4 mb-3">Identifying Non-Obvious SSRF Targets</h2>
+                    <p class="mb-3">
+                      Non‑obvious SSRF targets are internal or cloud endpoints that are not exposed to the internet but become reachable 
+                      when a vulnerable server makes requests on an attacker’s behalf.​
+                    </p>
+
+                    <h3 class="h5 mt-3">Cloud metadata and identity services</h3>
+                    <p>
+                      In cloud environments, metadata services are prime hidden targets because they sit on link‑local addresses like 169.254.169.254 or 
+                      provider hostnames (for example, AWS IMDS, Azure, GCP metadata). These endpoints often return instance configuration, IAM credentials, 
+                      tokens, and other secrets that let an attacker pivot into S3 buckets, VMs, or other managed services once accessed through SSRF.​
+                    </p>
+
+                    <h3 class="h5 mt-3">Internal APIs, admin panels, and services</h3>
+                    <p>
+                      Inside a company network, SSRF can quietly hit internal REST or gRPC APIs, orchestration panels, Kubernetes control services, 
+                      config servers, or monitoring dashboards that trust traffic from the app server. Other less obvious targets 
+                      include HTTP‑enabled databases (Elasticsearch, CouchDB), message queues, and identity or SSO backends, where SSRF can trigger 
+                      privileged actions or data access that were never meant to be exposed externally.​
+                    </p>
+
+                    <h3 class="h5 mt-3">Discovery techniques for hidden targets</h3>
+                    <p class="mb-0">
+                      To identify these targets during testing, attackers and testers use SSRF to probe internal IP ranges, watch for timing differences, 
+                      and look for recognizable banners or error messages that indicate specific technologies. They also rely on common metadata IPs/hostnames 
+                      for each cloud provider, standard internal service ports, and automated tools or wordlists (for example, from SSRF cheat sheets and 
+                      payload repositories) to map out reachable but non‑public services behind the vulnerable application.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+    <!-- SSRF Content End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+      <div class="container py-5 border-start-0 border-end-0" style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+        <div class="row g-5">
+          <div class="col-md-6 col-lg-6 col-xl-4">
+            <div class="footer-item">
+              <a href="index.html" class="p-0">
+                <h4 class="text-white"><i></i>INFOSEC</h4>
+                <!-- <img src="img/logo.png" alt="Logo"> -->
+              </a>
+              <p class="mb-4">
+                Secure your web applications from end to end. Explore both server-side and client-side security strategies to protect your systems and users.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-2">
+            <div class="footer-item">
+              <h4 class="text-white mb-4">Quick Links</h4>
+              <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
+              <a href="#"><i class="fas fa-angle-right me-2"></i> Feature</a>
+              <a href="#"><i class="fas fa-angle-right me-2"></i> Blog</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="footer-item">
+              <h4 class="text-white mb-4">Support</h4>
+              <a href="#"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+              <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+              <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-md-6 text-center text-md-start mb-md-0">
+            <span class="text-body">
+              <a href="#" class="border-bottom text-white">
+                <i class="fas fa-copy text-light me-2"></i>INFOSEC
+              </a>, All right reserved.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Copyright End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

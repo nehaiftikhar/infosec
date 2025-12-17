@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>InfoSec — Web Penetration Testing & Security Research</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+     
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="text-primary"><i></i>INFOSEC</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                   
+                    
+            </nav>
+         <div class="container-fluid bg-breadcrumb"
+     style="
+       background-image: url('img/csrf.png');
+       background-size: cover;        /* show whole image */
+       background-repeat: no-repeat;    /* no tiling */
+       background-position: center 30%;
+       min-height: 350px;               /* adjust as needed */
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       padding: 60px 0;
+     ">
+  <div class="container text-center" style="max-width: 900px;">
+    <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">
+      Cross-site Request Forgery
+    </h4>
+  </div>
+</div>
+
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+        <!-- 404 Start -->
+       <!-- CSRF Content Start -->
+<section class="container py-5 card-hover-section">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <section class="container py-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+
+            <!-- CSRF: Definition and Concept -->
+            <div class="card mb-4 shadow-sm border-0">
+              <div class="card-body p-4">
+                <h2 class="h3 mb-3 text-primary">CSRF: Definition and Concept</h2>
+                <p class="mb-3">
+                  Cross-site request forgery (CSRF) is a web vulnerability where a site is tricked into accepting an HTTP request that appears to come from an authenticated user but was actually initiated by an attacker. In practice, it abuses the browser's automatic sending of credentials (like cookies) to perform unintended actions on behalf of the victim.
+                </p>
+                <h3 class="h5 mt-3">Core definition</h3>
+                <p class="mb-0">
+                  CSRF is an attack that forces a logged-in user's browser to send a crafted request to a target application, causing a state-changing action such as updating profile data, changing a password, or transferring funds, without the user's explicit intent. The application trusts the incoming request because it carries valid credentials (for example, the user's session cookie), and typically cannot distinguish it from a genuine user-initiated request.
+                </p>
+              </div>
+            </div>
+
+            <!-- Risks Associated with CSRF Exploitation -->
+            <div class="card mb-4 shadow-sm border-0">
+              <div class="card-body p-4">
+                <h2 class="h4 mb-3">Risks Associated with CSRF Exploitation</h2>
+                <p class="mb-3">
+                  CSRF exploitation poses significant risks by enabling attackers to perform unauthorized actions on behalf of authenticated users. These risks escalate based on the victim's privileges and the application's functions.
+                </p>
+                <h3 class="h5 mt-3">Account Compromise</h3>
+                <p class="mb-3">
+                  Attackers can change user details like email addresses or passwords, often leading to full account takeover via password resets. If the victim holds admin rights, this extends to controlling the entire application, including user data and settings.
+                </p>
+                <h3 class="h5 mt-3">Financial and Data Loss</h3>
+                <p class="mb-3">
+                  Exploitation frequently targets banking or e-commerce sites, resulting in unauthorized transfers, purchases, or data modifications without user awareness. Victims may lose funds or sensitive information, such as personal details or transaction history.
+                </p>
+                <h3 class="h5 mt-3">Broader System Impacts</h3>
+                <p class="mb-0">
+                  Stored CSRF flaws amplify threats by embedding attacks within the site itself, increasing execution likelihood for all visitors. Outcomes include privilege escalation, denial-of-service crashes, or bypassing security controls, damaging trust and operations.
+                </p>
+              </div>
+            </div>
+
+            <!-- The Mechanism Behind CSRF Attacks -->
+            <div class="card mb-4 shadow-sm border-0">
+              <div class="card-body p-4">
+                <h2 class="h4 mb-3">The Mechanism Behind CSRF Attacks</h2>
+                <p class="mb-3">
+                  CSRF attacks operate by exploiting the browser's automatic inclusion of authentication credentials in requests to trusted sites. Attackers craft malicious content that triggers these requests without user awareness, leveraging the victim's active session.
+                </p>
+                <h3 class="h5 mt-3">Attack Prerequisites</h3>
+                <p class="mb-3">
+                  The target application must perform state-changing actions via requests lacking unique, unpredictable tokens, relying solely on session cookies for authentication. Victims need to be logged in, with browsers sending cookies automatically to the target domain during cross-origin requests.
+                </p>
+                <h3 class="h5 mt-3">Execution Steps</h3>
+                <p class="mb-3">
+                  Attackers create HTML pages with hidden forms, image tags, or JavaScript that submit forged GET/POST/PUT requests mimicking legitimate actions, such as fund transfers or password changes. Delivery occurs via phishing links, malicious sites, or embedded content that auto-executes on page load, fooling the server into processing the request as authentic.
+                </p>
+                <h3 class="h5 mt-3">Technical Exploitation</h3>
+                <p class="mb-0">
+                  Forms use methods like <code>&lt;form action="https://target.com/action" method="POST"&gt;</code> with attacker-controlled parameters, submitted via onload JavaScript. Advanced variants employ XMLHttpRequest or iframes for seamless, invisible requests, succeeding if parameters are predictable.
+                </p>
+              </div>
+            </div>
+
+            <!-- Building a Cross-Site Request Forgery Payload -->
+            <div class="card mb-4 shadow-sm border-0">
+              <div class="card-body p-4">
+                <h2 class="h4 mb-3">Building a Cross-Site Request Forgery Payload</h2>
+                <p class="mb-3">
+                  CSRF payloads are crafted as HTML snippets hosted on attacker-controlled sites to trigger unauthorized requests. These exploit browsers sending session cookies automatically, mimicking legitimate user actions like form submissions.
+                </p>
+                <h3 class="h5 mt-3">Basic POST Payload</h3>
+                <p class="mb-3">
+                  A common payload uses a hidden form auto-submitted via JavaScript to change an email address on a vulnerable site.
+                </p>
+                <pre class="bg-light p-3 rounded"><code>&lt;html&gt;
+&lt;body&gt;
+&lt;form action="https://vulnerable-website.com/email/change" method="POST"&gt;
+  &lt;input type="hidden" name="email" value="pwned@evil-user.net" /&gt;
+&lt;/form&gt;
+&lt;script&gt;
+  document.forms[0].submit();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p class="mb-3">This executes silently when loaded, sending the POST with victim credentials.</p>
+
+                <h3 class="h5 mt-3">GET Request Variant</h3>
+                <p class="mb-3">
+                  For GET-based actions, an image tag triggers the request without interaction.
+                </p>
+                <pre class="bg-light p-3 rounded"><code>&lt;img src="http://www.example.com/api/setusername?username=CSRFd"&gt;</code></pre>
+                <p class="mb-3">Attackers embed this in pages or emails to perform actions like parameter changes.</p>
+
+                <h3 class="h5 mt-3">Advanced JSON POST</h3>
+                <p class="mb-3">
+                  Modern apps may use XMLHttpRequest for JSON payloads, bypassing some protections with text/plain content types.
+                </p>
+                <pre class="bg-light p-3 rounded"><code>&lt;script&gt;
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "http://www.example.com/api/setrole");
+xhr.setRequestHeader("Content-Type", "text/plain");
+xhr.send('{"role":admin}');
+&lt;/script&gt;</code></pre>
+                <p class="mb-0">This targets APIs, escalating privileges if no token validation exists.</p>
+              </div>
+            </div>
+
+            <!-- Mechanisms for Triggering a CSRF Exploit -->
+            <div class="card mb-4 shadow-sm border-0">
+              <div class="card-body p-4">
+                <h2 class="h4 mb-3">Mechanisms for Triggering a CSRF Exploit</h2>
+                <p class="mb-3">
+                  CSRF exploits are triggered when a victim's browser, already authenticated to the target site, loads or interacts with attacker-controlled content. This causes the browser to send forged requests using the victim's valid session credentials automatically.
+                </p>
+                <h3 class="h5 mt-3">Social Engineering Delivery</h3>
+                <p class="mb-3">
+                  Attackers lure victims to malicious pages via phishing emails, spam links, or forum posts containing exploit URLs or HTML. Once loaded, the page executes the request silently while the victim remains logged into the target application.
+                </p>
+                <h3 class="h5 mt-3">Auto-Submitting Elements</h3>
+                <p class="mb-3">
+                  Hidden forms with JavaScript like <code>document.forms[0].submit()</code> trigger POST requests on page load. Image tags (<code>&lt;img src="https://target.com/action?param=value"&gt;</code>) or script tags handle GET requests without user clicks.
+                </p>
+                <h3 class="h5 mt-3">Stored and Advanced Triggers</h3>
+                <p class="mb-0">
+                  Stored CSRF embeds exploits in site comments or profiles, executing for authenticated visitors viewing the content. Iframes, XMLHttpRequest, or method overrides (e.g., POST to bypass CORS) enable stealthy execution in modern browsers.
+                </p>
+              </div>
+            </div>
+
+            <!-- Standard Mitigation Techniques for CSRF -->
+            <div class="card mb-4 shadow-sm border-0">
+              <div class="card-body p-4">
+                <h2 class="h4 mb-3">Standard Mitigation Techniques for CSRF</h2>
+                <p class="mb-3">
+                  Standard mitigation techniques for CSRF focus on breaking the attack chain by requiring proof of legitimate origin or intent. These include token validation, cookie attributes, and request restrictions, often layered for defense in depth.
+                </p>
+                <h3 class="h5 mt-3">Synchronizer Tokens</h3>
+                <p class="mb-3">
+                  Applications generate unique, unpredictable tokens per session or form, embedding them in hidden fields or headers. Servers validate the token on state-changing requests (POST, PUT, DELETE), rejecting mismatches since attackers cannot predict or read them due to same-origin policy.
+                </p>
+                <h3 class="h5 mt-3">SameSite Cookies</h3>
+                <p class="mb-3">
+                  Setting session cookies with <code>SameSite=Strict</code> or <code>Lax</code> prevents browsers from sending them on cross-site requests, blocking forged actions. Strict mode applies to all cross-site requests; Lax allows safe methods like GET from top-level navigation.
+                </p>
+                <h3 class="h5 mt-3">Custom Headers and Checks</h3>
+                <p class="mb-3">
+                  AJAX requests include non-standard headers (e.g., <code>X-CSRF-Token</code>) settable only same-origin, which cross-site attackers cannot forge. Servers verify headers, Origin, or Referer; avoid sole reliance on Referer due to suppression risks.
+                </p>
+                <h3 class="h5 mt-3">Additional Practices</h3>
+                <p class="mb-0">
+                  Require user interaction (e.g., re-authentication) for sensitive actions and restrict GET to read-only operations. Modern frameworks like ASP.NET auto-generate antiforgery tokens for forms.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+<!-- CSRF Content End -->
+<!-- 404 End -->
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+            <div class="container py-5 border-start-0 border-end-0" style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-4">
+                        <div class="footer-item">
+                            <a href="index.html" class="p-0">
+                                <h4 class="text-white"><i></i>INFOSEC</h4>
+                                <!-- <img src="img/logo.png" alt="Logo"> -->
+                            </a>
+                            <p class="mb-4">Secure your web applications from end to end. Explore both server-side and client-side security strategies to protect your systems and users.</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-2">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Quick Links</h4>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Feature</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Blog</a>
+                            </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Support</h4>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ</a>
+                            </div>
+                    </div>
+                   
+            </div>
+        </div>
+        <!-- Footer End -->
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-md-0">
+                        <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>INFOSEC</a>, All right reserved.</span>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
+
+</html>

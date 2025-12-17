@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>InfoSec — Web Penetration Testing & Security Research</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+        <style>
+  .blf-hero {
+    position: relative;
+    background-image: url('img/business-logic.png');
+    background-size: 110%;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: heroZoom 10s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroZoom {
+    from { background-size: 100%; }
+    to   { background-size: 130%; }
+  }
+</style>
+
+     
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="text-primary"><i></i>INFOSEC</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                   
+                    
+            </nav>
+
+          <div class="container-fluid bg-breadcrumb blf-hero">
+  <div class="container text-center py-5" style="max-width: 900px;">
+    <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">
+      Business Logic Flaws
+    </h4>
+  </div>
+</div>
+
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+        <!-- 404 Start -->
+       <!-- Business Logic Content Start -->
+<section class="container py-5 card-hover-section">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+
+      <!-- Business Logic Vulnerabilities -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h3 mb-3 text-primary">Business Logic Flaws</h2>
+          <p class="mb-0">
+            Business logic flaws are weaknesses in how an application’s rules, workflows, and decisions are designed, not just in its raw code.​
+          </p>
+        </div>
+      </div>
+
+      <!-- What they are -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">What they are</h2>
+          <p>
+            Business logic defines how actions like payments, discounts, approvals, and account changes should behave to match real-world rules. 
+            A business logic flaw appears when attackers can legally use existing features in unexpected ways 
+            (for example, reordering steps, reusing tokens, or modifying hidden fields) to get outcomes that were never intended, such as free items,
+            unauthorized refunds, or privilege escalation.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Why they are hard to catch -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">Why they are hard to catch</h2>
+          <p class="mb-0">
+            These flaws often do not trigger errors, crashes, or classic security alerts because the application behaves “as designed,” 
+            just with bad design assumptions. Automated scanners struggle to detect them, so finding them typically requires human understanding 
+            of the domain rules, edge cases, and how real users are supposed to behave within each workflow.
+          </p>
+        </div>
+      </div>
+
+      <!-- Root Causes of Logic-Level Security Flaws -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">Root Causes of Logic-Level Security Flaws</h2>
+          <p class="mb-0">
+            Root causes of logic-level security flaws lie less in bugs like missing sanitization and more in how teams design, interpret, 
+            and enforce an application’s business rules.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Flawed assumptions and misunderstood requirements -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h5 mb-3">Flawed assumptions and misunderstood requirements</h2>
+          <p>
+            Many business logic flaws start with incorrect assumptions about how users will behave, such as always following the happy path, 
+            never replaying requests, or only using the official UI instead of direct API calls. Misinterpretation of business requirements 
+            or an incomplete understanding of real workflows leads developers to miss edge cases, abuse scenarios, and failure states, leaving gaps 
+            that attackers later exploit.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Excessive trust and missing validation -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h5 mb-3">Excessive trust and missing validation</h2>
+          <p>
+            Designers often trust client-side controls and user-supplied parameters (price, quantity, role, coupon IDs, workflow step IDs) without 
+            enforcing the same rules on the server. This lack of server-side validation for state transitions, limits, and object properties allows 
+            attackers to skip steps, reuse one-time artifacts, or directly manipulate internal object state (for example, roles or flags) through crafted requests.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Incomplete threat modeling and testing -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h5 mb-3">Incomplete threat modeling and testing</h2>
+          <p class="mb-0">
+            Logic flaws frequently come from limited or purely technical threat modeling that focuses on classic vulnerabilities while ignoring 
+            economic abuse, workflow bypass, race conditions, and quota violations. Traditional automated scanners rarely catch these issues, 
+            so teams that rely only on tooling and skip manual, scenario-based testing of real-world abuse paths leave business logic weaknesses 
+            undiscovered in production.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Potential Outcomes of Business Logic Failures -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">Potential Outcomes of Business Logic Failures</h2>
+          <p class="mb-0">
+            Business logic failures can turn ordinary features into powerful abuse tools that hit revenue, data, and trust at the same time.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Financial and fraud impact -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h5 mb-3">Financial and fraud impact</h2>
+          <p>
+            When attackers manipulate pricing, discounts, billing flows, or usage limits, they can generate fraudulent transactions, get products 
+            or services for free, or drain promotional budgets. At scale this leads to sustained revenue loss, abuse of free trials or loyalty programs, 
+            and subtle “business logic fraud” that is hard to detect because the traffic looks legitimate.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Data exposure and unauthorized access -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h5 mb-3">Data exposure and unauthorized access</h2>
+          <p>
+            Logic flaws that weaken authorization or workflow checks can expose personal data, financial records, or internal business information 
+            to users who should never see it. This kind of unintended access can qualify as a data breach under regulations like GDPR or PCI‑DSS, 
+            triggering incident response, disclosure obligations, and regulatory penalties.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Operational disruption and quota abuse -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h5 mb-3">Operational disruption and quota abuse</h2>
+          <p>
+            Abusing workflows that trigger expensive operations (search, report generation, AI calls, inventory sync) can exhaust resource quotas or 
+            create logic loops that slow or crash services. Attackers may also bypass rate limits or action counters (for example, unlimited coupon 
+            redemptions or retries), leading to performance degradation and service instability for normal users.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Reputation and compliance damage -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h5 mb-3">Reputation and compliance damage</h2>
+          <p class="mb-0">
+            Public incidents where customers discover they can easily cheat pricing or access other users’ data quickly erode trust in the brand. 
+            Organizations may then face lawsuits, fines, or loss of certifications if auditors conclude that weak business logic controls failed 
+            to protect customer assets and comply with industry standards.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Examples of Business Logic Vulnerabilities -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">Examples of Business Logic Flaws</h2>
+          <p class="mb-0">
+            Business logic flaws show up when normal features are combined or ordered in ways the designers did not expect, 
+            letting attackers “legally” break the rules.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Discount and pricing abuse -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h5 mb-3">Discount and pricing abuse</h2>
+          <p>
+            A classic example is an e‑commerce site that applies a large discount once the cart exceeds a threshold (for example 10% off above a certain amount) 
+            but does not revalidate after items are removed. Attackers add extra products to qualify for the discount, trigger it, 
+            then remove those items before checkout and still pay the reduced price for a much smaller order.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Skipping critical workflow steps -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h5 mb-3">Skipping critical workflow steps</h2>
+          <p>
+            If multi‑step flows are not enforced server‑side, an attacker can call the “final” endpoint directly, skipping approvals or payments. 
+            For instance, going straight to an order‑confirmation or subscription‑activation API without completing the payment step can result 
+            in free goods or premium access.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Abusing limits, quotas, and one-time actions -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h5 mb-3">Abusing limits, quotas, and one‑time actions</h2>
+          <p>
+            Many systems rely on “one‑time” tokens, coupons, or actions but fail to lock them after first use or to handle concurrent requests correctly. 
+            Real cases include repeatedly redeeming the same discount or fee‑waiver by sending many parallel requests, leading to effectively unlimited 
+            free transactions or promotional credits.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Role, object, and ID manipulation -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h5 mb-3">Role, object, and ID manipulation</h2>
+          <p class="mb-0">
+            APIs that bind user input directly into internal objects without checking ownership or permissions allow attackers to change IDs or 
+            flags in requests. This can be as simple as swapping an object ID to view or modify another user’s data, or toggling a “role” or “is_admin” 
+            field to gain higher privileges without any explicit access control bug in the code.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Approaches for Reducing Logic-Level Security Risks -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">Approaches for Reducing Logic-Level Security Risks</h2>
+          <p class="mb-0">
+            Reducing logic-level security risks means treating business rules as a primary attack surface and baking security into how workflows are designed, 
+            implemented, and tested.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Design with abuse cases in mind -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h5 mb-3">Design with abuse cases in mind</h2>
+          <p>
+            During requirements and design, map not only the “happy path” but also how a malicious user might skip steps, replay actions, 
+            or combine features to gain advantage. Document workflows, inputs, outputs, and assumptions clearly, then validate those assumptions 
+            explicitly in code instead of relying on the UI or “expected” user behavior.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Enforce server-side validation and workflow checks -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h5 mb-3">Enforce server-side validation and workflow checks</h2>
+          <p>
+            Always enforce business rules on the backend: verify state transitions (for example, payment must succeed before fulfillment), 
+            limits (per-user quotas, one-time tokens), and ownership (object IDs must belong to the current user). 
+            Avoid trusting client-side fields like price, quantity, or role; re-calculate sensitive values server-side and reject any request 
+            that violates defined constraints.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Threat modeling and logic-focused testing -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h5 mb-3">Threat modeling and logic-focused testing</h2>
+          <p>
+            Run threat modeling exercises specifically for business logic to uncover where users could loop, skip, or branch flows in unintended ways. 
+            Complement automated scans with manual, scenario-based testing that simulates creative abuse—such as race conditions, coupon re-use, 
+            or out-of-order API calls—and integrate these tests into CI/CD so regressions are caught early.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Strong access control and rate limiting -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h5 mb-3">Strong access control and rate limiting</h2>
+          <p>
+            Use least privilege, role-based or attribute-based access control and centralize authorization policies so every sensitive action is checked consistently. 
+            Add rate limiting and quotas around high-impact operations (payments, coupon redemption, account changes) to reduce the blast radius 
+            if logic flaws slip through.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Governance, monitoring, and education -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h5 mb-3">Governance, monitoring, and education</h2>
+          <p class="mb-0">
+            Integrate logic-security checks into the SDLC with regular reviews, code walkthroughs, and targeted penetration tests focused on workflows and APIs. 
+            Monitor behavioral signals such as abnormal redemption patterns, unusual access sequences, or API usage spikes, and train developers, QA, 
+            and product owners to recognize business-logic abuse patterns as part of normal security practice.​
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+        <!-- 404 End -->
+
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+            <div class="container py-5 border-start-0 border-end-0" style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-4">
+                        <div class="footer-item">
+                            <a href="index.html" class="p-0">
+                                <h4 class="text-white"><i></i>INFOSEC</h4>
+                                <!-- <img src="img/logo.png" alt="Logo"> -->
+                            </a>
+                            <p class="mb-4">Secure your web applications from end to end. Explore both server-side and client-side security strategies to protect your systems and users.</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-2">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Quick Links</h4>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Feature</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Blog</a>
+                            </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Support</h4>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ</a>
+                            </div>
+                    </div>
+                   
+            </div>
+        </div>
+        <!-- Footer End -->
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-md-0">
+                        <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>INFOSEC</a>, All right reserved.</span>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
+
+</html>

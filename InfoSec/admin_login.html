@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Admin Login — INFOSEC Web Security Platform</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="admin login, infosec admin, web security admin" name="keywords">
+    <meta content="Admin login for INFOSEC web security platform management." name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" href="lib/animate/animate.min.css"/>
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" sizes="16x16 32x32">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Topbar Start -->
+    <div class="container-fluid topbar bg-light px-5 d-none d-lg-block">
+        <div class="row gx-0 align-items-center">
+            <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
+            </div>
+            <div class="col-lg-4 text-center text-lg-end">
+                <div class="d-inline-flex align-items-center" style="height: 45px;">
+                    <a href="signup.html"><small class="me-3 text-dark"><i class="fa fa-user-plus text-primary me-2"></i>Register</small></a>
+                    <a href="login.html"><small class="me-3 text-dark"><i class="fa fa-sign-in-alt text-primary me-2"></i>User Login</small></a>
+                    <a href="admin-login.html"><small class="me-3 text-dark"><i class="fa fa-user-shield text-primary me-2"></i>Admin</small></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <a href="index.html" class="navbar-brand p-0">
+                <h1 class="text-primary"><i></i>INFOSEC</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="index.html" class="nav-item nav-link">Home</a>
+                    <a href="index.html#about" class="nav-item nav-link">About</a>
+                    <a href="index.html#services" class="nav-item nav-link">Server-Side</a>
+                    <a href="index.html#client" class="nav-item nav-link">Client-Side</a>
+                    <a href="admin-login.html" class="nav-item nav-link active">Admin</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Admin Login Section Start -->
+    <div class="container-fluid about py-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
+                    <h3 class="mb-4">INFOSEC Admin Panel</h3>
+                    <p class="mb-4">
+                        Access the administrative dashboard to manage users, monitor learning progress, 
+                        review lab completions, and oversee platform analytics for web security training.
+                    </p>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2"><i class="fa fa-check text-primary me-2"></i>Manage user accounts and permissions</li>
+                        <li class="mb-2"><i class="fa fa-check text-primary me-2"></i>Review lab submissions and analytics</li>
+                        <li class="mb-2"><i class="fa fa-check text-primary me-2"></i>Monitor platform security and usage</li>
+                        <li class="mb-2"><i class="fa fa-check text-primary me-2"></i>Update content and manage courses</li>
+                    </ul>
+                    <p class="mb-0">
+                        User login? <a href="login.html" class="text-primary fw-bold">Click here</a>.
+                    </p>
+                </div>
+                                <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
+                    <div class="bg-light rounded p-4 p-md-5 shadow-sm border-primary border-3">
+                        <h4 class="mb-4 text-center text-primary">
+                            <i class="fa fa-user-shield me-2"></i>Admin Login
+                        </h4>
+                        <form id="adminLoginForm" novalidate autocomplete="off">
+                            <div class="mb-3">
+                                <label for="adminUsername" class="form-label fw-bold">Admin Username</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-primary text-white">
+                                        <i class="fa fa-user-shield"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="adminUsername" name="adminUsername" 
+                                           placeholder="Enter admin username" required autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="adminPassword" class="form-label fw-bold">Admin Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-primary text-white">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                                    <input type="password" class="form-control" id="adminPassword" name="adminPassword" 
+                                           placeholder="Enter admin password" required autocomplete="off">
+                                    <button type="button" class="btn btn-outline-secondary toggle-password" 
+                                            data-target="adminPassword" aria-label="Toggle password visibility">
+                                        <i class="fa fa-eye"></i>
+                                    </button>
+                                </div>
+                                <small id="adminError" class="form-text text-danger d-block mt-1"></small>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 py-3 fw-bold fs-6">
+                                <i class="fa fa-sign-in-alt me-2"></i>Access Admin Panel
+                            </button>
+
+                            <div class="text-center mt-4 pt-3 border-top">
+                                <small class="text-muted">
+                                    User Login? <a href="login.html" class="text-primary">Click here</a>
+                                </small>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Admin Login Section End -->
+
+    <!-- Footer Start (reuse same footer as index) -->
+    <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+        <div class="container py-5 border-start-0 border-end-0" style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-6 col-xl-4">
+                    <div class="footer-item">
+                        <a href="index.html" class="p-0">
+                            <h4 class="text-white"><i></i>INFOSEC</h4>
+                        </a>
+                        <p class="mb-4">
+                            Secure your web applications from end to end. Explore both server-side and client-side security strategies to protect your systems and users.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-2">
+                    <div class="footer-item">
+                        <h4 class="text-white mb-4">Quick Links</h4>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Feature</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Blog</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item">
+                        <h4 class="text-white mb-4">Support</h4>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-md-0">
+                    <span class="text-body">
+                        <a href="#" class="border-bottom text-white">
+                            <i class="fas fa-copyright text-light me-2"></i>
+                            INFOSEC
+                        </a>, All rights reserved.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Admin Login Validation -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('adminLoginForm');
+        const errorEl = document.getElementById('adminError');
+
+        // Password visibility toggle
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.toggle-password')) {
+                const btn = e.target.closest('.toggle-password');
+                const targetId = btn.getAttribute('data-target');
+                const field = document.getElementById(targetId);
+                if (field) {
+                    field.type = field.type === 'password' ? 'text' : 'password';
+                    const icon = btn.querySelector('i');
+                    icon.classList.toggle('fa-eye');
+                    icon.classList.toggle('fa-eye-slash');
+                }
+            }
+        });
+
+        // Admin login validation
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const username = document.getElementById('adminUsername').value.trim().toLowerCase();
+                const password = document.getElementById('adminPassword').value;
+                
+                // Admin credentials: username="admin", password="admin123"
+                if (username === 'admin' && password === 'admin123') {
+                    errorEl.textContent = '';
+                    
+                    // Set admin session & cookie
+                    sessionStorage.setItem('infosecAdminSession', JSON.stringify({role: 'admin', loggedIn: true}));
+                    document.cookie = `infosecAdmin=active; path=/; max-age=86400`;
+                    
+                    alert('Admin login successful! Accessing dashboard...');
+                    window.location.href = 'index.html'; // or admin-dashboard.html
+                } else {
+                    errorEl.textContent = 'Invalid admin credentials. Contact support if you forgot your credentials.';
+                    document.getElementById('adminPassword').value = '';
+                }
+            });
+        }
+    });
+    </script>
+</body>
+</html>
+

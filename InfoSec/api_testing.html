@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>InfoSec — Web Penetration Testing & Security Research</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+     
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+      
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="text-primary"><i></i>INFOSEC</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                   
+                    
+            </nav>
+
+            <!-- Header Start -->
+            <div class="container-fluid bg-breadcrumb"
+           style="background-image: url('img/api-testing.png'); background-size: cover; background-position: center;">
+        <div class="container text-center py-5" style="max-width: 900px;">
+          <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">
+            API Testing
+          </h4>
+        </div>
+      </div>
+            <!-- Header End -->
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+        <!-- 404 Start -->
+        <!-- API Content Start -->
+<section class="container py-5 card-hover-section">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+<section class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+
+      <!-- API testing -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h3 mb-3 text-primary">API testing</h2>
+
+
+          <p class="mb-0">
+            API testing is the process of sending requests directly to an API’s endpoints and checking that the responses meet expectations 
+            for functionality, reliability, performance, and security.
+          </p>
+        </div>
+      </div>
+
+      <!-- What API testing focuses on -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">What API testing focuses on</h2>
+          <p class="mb-0">
+            API tests validate that each endpoint does the right thing with given inputs, returns correct data and status codes, 
+            enforces authentication/authorization, and handles errors safely. Because APIs usually lack a graphical interface, 
+            this testing happens at the message layer (HTTP methods, headers, payloads like JSON or XML) instead of through the UI.
+          </p>
+        </div>
+      </div>
+
+      <!-- API Reconnaissance Techniques -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">API Reconnaissance Techniques</h2>
+          <p class="mb-3">
+            API reconnaissance focuses on discovering all the APIs, endpoints, and parameters you can interact with before you start heavy testing, 
+            so you see the real attack surface instead of just what the UI shows.
+          </p>
+
+          <h3 class="h5 mt-3">Mapping hosts and endpoints</h3>
+          <p>
+            Start by enumerating subdomains and hosts likely to expose APIs (for example, api.example.com, dev-api.example.com) using tools like Amass 
+            or similar subdomain finders, then probe them for open HTTP services. Next, discover endpoints by crawling traffic through an intercepting proxy, 
+            using endpoint/route fuzzers like Intruder or API‑focused tools such as KiteRunner with targeted wordlists to brute‑force common paths like /api/v1/users, 
+            /auth/login, or /admin/*.​
+          </p>
+
+          <h3 class="h5 mt-3">Mining documentation, JavaScript, and OSINT</h3>
+          <p>
+            Public docs, SDKs, OpenAPI/Swagger specs, and help centers often leak real endpoint paths, parameters, and request examples; scraping these 
+            to build custom wordlists greatly improves discovery. On the front end, enumerating JavaScript files and parsing them with tools like LinkFinder 
+            or similar scripts can reveal hidden API endpoints and even hard-coded keys or tokens that never appear in the visible UI.​
+          </p>
+
+          <h3 class="h5 mt-3">Parameter and behavior discovery</h3>
+          <p class="mb-0">
+            Once core endpoints are known, parameter fuzzing helps you uncover hidden or undocumented fields such as is_admin, role, limit, or experimental flags 
+            that change behavior. Techniques include sending requests with guessed parameter names, leveraging tools like Param Miner, and varying HTTP headers 
+            (for example, X-HTTP-Method-Override, X-Forwarded-For) to see how the API reacts, which often exposes extra logic, debug features, 
+            or alternate code paths worth deeper testing.
+          </p>
+        </div>
+      </div>
+
+      <!-- API Schema / API Blueprint -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">API Schema / API Blueprint</h2>
+          <p class="mb-3">
+            API schema and API Blueprint are both ways to describe how an API works in a precise, machine- and human-readable format.​
+          </p>
+
+          <h3 class="h5 mt-3">API schema (OpenAPI-style)</h3>
+          <p>
+            An API schema is a structured definition of an API’s endpoints, methods, parameters, request bodies, and response shapes, 
+            usually written in OpenAPI (formerly Swagger) using JSON or YAML. By formalizing data types and operations in a schema, 
+            teams can auto-generate documentation, client SDKs, server stubs, and validation, ensuring everyone shares the same contract 
+            for how the API should behave.​
+          </p>
+
+          <h3 class="h5 mt-3">API Blueprint</h3>
+          <p>
+            API Blueprint is a high-level, Markdown-based language for describing web APIs in a more narrative, documentation-first style. 
+            A Blueprint file (.apib) mixes headings, examples, and structured blocks to define resources, actions, request/response payloads, 
+            and headers, making it easy for both technical and non-technical stakeholders to read while still being parsable by tools like Apiary.​
+          </p>
+
+          <h3 class="h5 mt-3">When to use which</h3>
+          <p class="mb-0">
+            OpenAPI schemas tend to be preferred when strong tooling, code generation, and strict validation are priorities across large systems. 
+            API Blueprint can be attractive for design-first workflows where teams want to sketch and iterate on API behavior directly in Markdown 
+            while keeping the document close to product-style prose.​
+          </p>
+        </div>
+      </div>
+
+      <!-- Mapping API Endpoints -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">Mapping API Endpoints</h2>
+          <p class="mb-3">
+            Mapping API endpoints is about building a complete list of every URL path, method, and parameter your API exposes so you know exactly 
+            what to test and protect.​
+          </p>
+
+          <h3 class="h5 mt-3">Gathering endpoints from existing sources</h3>
+          <p>
+            Start with what you already have: proxy or browser DevTools logs, server logs, and any OpenAPI/Swagger specs or internal docs. 
+            Capture each request’s path (for example /api/v1/users), HTTP method, auth type, and main parameters, and record them in a central inventory 
+            or spreadsheet so you can see coverage and duplicates.​
+          </p>
+
+          <h3 class="h5 mt-3">Discovering hidden and undocumented routes</h3>
+          <p class="mb-0">
+            To go beyond what the UI shows, probe common API base paths (/api, /api/v1, /mobile, /admin) and use route/wordlist fuzzing tools 
+            to brute-force potential endpoints. Combine this with JavaScript/code review and passive recon to uncover extra endpoints, 
+            then extend your inventory with notes about which roles can access each one, forming a full map that drives deeper security and functional testing.
+          </p>
+        </div>
+      </div>
+
+      <!-- Detecting Concealed Parameters -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">Detecting Concealed Parameters</h2>
+          <p class="mb-3">
+            Detecting concealed parameters means finding extra query/body fields, headers, or cookies that the backend uses even though the UI never exposes them, 
+            which often reveals hidden features or insecure logic paths.​
+          </p>
+
+          <h3 class="h5 mt-3">Practical techniques</h3>
+          <p>
+            A common approach is parameter fuzzing: take a valid request and systematically add many candidate parameter names while monitoring for changes in status codes, 
+            response size, or content. Tools such as Burp Param Miner, x8, or ZAP Param Digger automate this by injecting parameter wordlists (for example admin, role, debug, 
+            redirect, test, preview, limit) and highlighting which ones cause meaningful response deltas.​
+          </p>
+          <h3 class="h5 mt-3">Example workflow</h3>
+          <p class="mb-0">
+            1. Normal request seen in proxy:<br>
+            GET /api/v1/profile HTTP/1.1<br>
+            Host: example.com<br>
+            Authorization: Bearer &lt;token&gt;<br><br>
+            2. Fuzzed request with guessed parameters:<br>
+            GET /api/v1/profile?debug=true&amp;is_admin=1 HTTP/1.1<br>
+            Host: example.com<br>
+            Authorization: Bearer &lt;token&gt;<br><br>
+            3. If debug=true suddenly adds stack traces or verbose error messages, or is_admin=1 makes the response include extra fields (for example, other users’ data or 
+            admin-only options), that indicates those concealed parameters are understood and acted on by the server despite not appearing in the UI or documentation.
+          </p>
+        </div>
+      </div>
+
+      <!-- Securing APIs Against Vulnerabilities -->
+      <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">Securing APIs Against Vulnerabilities</h2>
+          <p class="mb-3">
+            Securing APIs against vulnerabilities means combining strong design, strict access control, and continuous testing so exposed endpoints do not become the easiest way into your systems.​
+          </p>
+
+          <h3 class="h5 mt-3">Strong authentication, authorization, and least privilege</h3>
+          <p>
+            Every sensitive endpoint should require robust authentication (for example OAuth 2.0/OIDC for user-facing APIs, signed keys or mTLS for service-to-service) rather than relying on simple 
+            static tokens. Enforce fine-grained authorization on the server using roles or scopes, apply least privilege to tokens and API keys, and rotate/expire credentials 
+            so a stolen token has limited value.​
+          </p>
+
+          <h3 class="h5 mt-3">Input validation, rate limiting, and data minimization</h3>
+          <p>
+            Validate and sanitize all inputs (paths, query params, bodies, headers) using allowlists, length and type checks, and parameterized queries to prevent injection, 
+            mass assignment, and deserialization attacks. Limit how often and how much clients can call each endpoint with rate limiting and quotas, and minimize data exposure 
+            by returning only necessary fields, avoiding debug information, and filtering sensitive values from responses and logs.​
+          </p>
+
+          <h3 class="h5 mt-3">Defense-in-depth with gateways and transport security</h3>
+          <p>
+            Place APIs behind an API gateway or reverse proxy that centralizes TLS termination, authentication, logging, and coarse-grained access controls like IP filtering 
+            and geo/risk-based rules. Enforce HTTPS/TLS for all external and internal API traffic, use modern cipher suites, and consider a WAF or API-specific security solution 
+            to detect and block common attack patterns such as injection, broken object-level authorization, or excessive data scraping.​
+          </p>
+
+          <h3 class="h5 mt-3">Continuous discovery, testing, and monitoring</h3>
+          <p class="mb-0">
+            Maintain an up-to-date inventory of all APIs, versions, and exposed hosts so shadow or deprecated APIs do not become unmonitored backdoors. 
+            Integrate static analysis, dynamic scanning, and dedicated API security tests (including checks aligned to the OWASP API Security Top 10) 
+            into CI/CD, and monitor production traffic for anomalies such as unusual error spikes, brute-force patterns, or data exfiltration attempts, responding quickly to alerts.​
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</div>
+  </div>
+</section>
+<!-- API Content End -->
+
+        <!-- 404 End -->
+
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+            <div class="container py-5 border-start-0 border-end-0" style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-4">
+                        <div class="footer-item">
+                            <a href="index.html" class="p-0">
+                                <h4 class="text-white"><i></i>INFOSEC</h4>
+                                <!-- <img src="img/logo.png" alt="Logo"> -->
+                            </a>
+                            <p class="mb-4">Secure your web applications from end to end. Explore both server-side and client-side security strategies to protect your systems and users.</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-2">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Quick Links</h4>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Feature</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Blog</a>
+                            </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Support</h4>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ</a>
+                            </div>
+                    </div>
+                   
+            </div>
+        </div>
+        <!-- Footer End -->
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-md-0">
+                        <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>INFOSEC</a>, All right reserved.</span>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
+
+</html>

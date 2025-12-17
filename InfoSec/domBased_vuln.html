@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>InfoSec — Web Penetration Testing & Security Research</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+        <style>
+    .dom-hero {
+      position: relative;
+      z-index: 0;
+    }
+    .dom-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55); /* increase alpha (0.55→0.7) for darker */
+      z-index: -1;
+    }
+  </style>
+     
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="text-primary"><i></i>INFOSEC</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                   
+                    
+            </nav>
+
+            <div class="container-fluid bg-breadcrumb dom-hero"
+       style="
+         background-image: url('img/domBased-vuln.png');
+         background-size: cover;
+         background-repeat: no-repeat;
+         background-position: center 30%;
+         min-height: 350px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         padding: 60px 0;
+       ">
+    <div class="container text-center" style="max-width: 900px;">
+      <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">
+        Dom-based Vulnerabilities
+      </h4>
+    </div>
+  </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+        <!-- 404 Start -->
+       
+          <!-- DOM-Based Vulnerabilities Content Start -->
+<section class="container py-5 card-hover-section">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <section class="container py-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+
+            <!-- Understanding the Document Object Model (DOM) -->
+            <div class="card mb-4 shadow-sm border-0">
+              <div class="card-body p-4">
+                <h2 class="h3 mb-3 text-primary">Understanding the Document Object Model (DOM)</h2>
+                <p class="mb-3">
+                  The Document Object Model (DOM) represents HTML, XML, or SVG documents as a tree structure of objects in memory.
+                  Browsers parse markup into this live model, enabling JavaScript to dynamically access, modify structure, content, styles, and events.
+                </p>
+
+                <h3 class="h5 mt-3">Tree Structure</h3>
+                <p class="mb-3">
+                  The DOM forms a hierarchical tree with the document node as root, branching into elements, attributes, text nodes, and
+                  comments as child nodes. Each node exposes properties (e.g., <code>nodeName</code>, <code>childNodes</code>) and methods
+                  (e.g., <code>appendChild()</code>, <code>removeChild()</code>) for traversal and manipulation.
+                </p>
+
+                <h3 class="h5 mt-3">Key Interfaces</h3>
+                <p class="mb-3">
+                  Core DOM provides language-neutral APIs; HTML DOM extends for browser-specific features like <code>getElementById()</code> or
+                  <code>querySelector()</code>. Event handling attaches listeners to nodes via <code>addEventListener()</code>, firing on user
+                  interactions or DOM changes.
+                </p>
+
+                <h3 class="h5 mt-3">Dynamic Nature</h3>
+                <p class="mb-0">
+                  Unlike static HTML, the DOM remains mutable post-load—scripts can insert/delete nodes, alter attributes, or trigger
+                  reflows/repaints. Mutations fire events like <code>DOMNodeInserted</code>, enabling reactive UIs but risking performance
+                  issues from frequent changes.
+                </p>
+              </div>
+            </div>
+
+            <!-- Insecure Data Flow Vulnerabilities -->
+            <div class="card mb-4 shadow-sm border-0">
+              <div class="card-body p-4">
+                <h2 class="h4 mb-3">Insecure Data Flow Vulnerabilities</h2>
+                <p class="mb-3">
+                  Insecure data flow vulnerabilities arise when untrusted or sensitive data moves through an application without proper validation,
+                  sanitization, or access control, ultimately reaching dangerous “sinks.” These flaws are typically modeled with taint-style analysis:
+                  data from an untrusted source becomes “tainted” and, if not neutralized, can drive security‑critical operations.
+                </p>
+
+                <h3 class="h5 mt-3">Core concept</h3>
+                <p class="mb-3">
+                  Data-flow vulnerabilities focus on how information travels from an entry point (source) to a sensitive operation (sink),
+                  potentially crossing multiple functions and layers. When this flow is not controlled, attackers can influence behavior such as
+                  command execution, database access, file I/O, or network calls.
+                </p>
+
+                <h3 class="h5 mt-3">Sources, sinks, and propagation</h3>
+                <p class="mb-3">
+                  Untrusted sources include user input, HTTP parameters, cookies, headers, request bodies, and external services or files.
+                  Sinks are security‑sensitive operations like SQL execution, OS commands, HTML rendering, deserialization, or internal network/file access.
+                  Propagation occurs as variables are passed through functions and data structures; if taint is not removed by validation or sanitization,
+                  the vulnerability remains exploitable.
+                </p>
+
+                <h3 class="h5 mt-3">Typical vulnerability types</h3>
+                <p class="mb-3">
+                  Many injection bugs are specific instances of insecure data flow, such as SQL injection (tainted input reaches query builders),
+                  XSS (tainted data sent to HTML/JS sinks), and insecure deserialization (untrusted serialized data fed into object deserializers).
+                  Server-side request forgery and path traversal similarly arise when unvalidated user-controlled URLs or paths are used in network
+                  or filesystem APIs.
+                </p>
+
+                <h3 class="h5 mt-3">Security impacts</h3>
+                <p class="mb-3">
+                  Insecure data flows can compromise confidentiality (leaking secrets), integrity (modifying data or behavior),
+                  and availability (denial-of-service via malicious input). At higher privilege levels (e.g., in kernels or critical backends),
+                  tainted flows can lead to memory corruption, remote code execution, or full system compromise.
+                </p>
+
+                <h3 class="h5 mt-3">Detection and mitigation</h3>
+                <p class="mb-0">
+                  Static and dynamic taint analysis tools track how data flows from sources to sinks, flagging paths where no sanitization or checks occur.
+                  Robust defenses include strict input validation at trust boundaries, context-appropriate output encoding, least-privilege design at sinks,
+                  and architectural reviews to ensure that sensitive operations never depend directly on untrusted data.
+                </p>
+              </div>
+            </div>
+
+            <!-- High-Risk DOM Sinks in Client-Side Code -->
+            <div class="card mb-4 shadow-sm border-0">
+              <div class="card-body p-4">
+                <h2 class="h4 mb-3">High-Risk DOM Sinks in Client-Side Code</h2>
+                <p class="mb-3">
+                  High-risk DOM sinks are JavaScript and DOM APIs that will interpret data as HTML, URLs, or executable code when fed with untrusted input.
+                  These sinks are the critical endpoints in DOM-based XSS and related client-side vulnerabilities.
+                </p>
+
+                <h3 class="h5 mt-3">Classic code-execution sinks</h3>
+                <p class="mb-3">
+                  <code>eval()</code>, <code>Function()</code>, <code>setTimeout()</code>, <code>setInterval()</code> when used with string arguments
+                  can execute attacker-controlled JavaScript directly.<br>
+                  <code>document.write()</code> / <code>document.writeln()</code> inject arbitrary markup into the document, allowing script execution
+                  if untrusted data is concatenated into the written HTML.
+                </p>
+
+                <h3 class="h5 mt-3">HTML and DOM injection sinks</h3>
+                <p class="mb-3">
+                  <code>element.innerHTML</code>, <code>outerHTML</code>, and <code>insertAdjacentHTML()</code> parse strings as HTML, enabling injection
+                  of elements with event handlers or JavaScript URLs.<br>
+                  Setting event handler properties (such as <code>element.onclick = userData</code>) or attributes via
+                  <code>setAttribute('onclick', userData)</code> can turn attacker-controlled strings into executable handlers.
+                </p>
+
+                <h3 class="h5 mt-3">URL and navigation sinks</h3>
+                <p class="mb-3">
+                  Assigning untrusted data to navigation-related properties or attributes, such as <code>location.href</code>, <code>element.href</code>,
+                  or form <code>action</code>/<code>method</code> attributes, can trigger <code>javascript:</code> URLs or open attacker-controlled
+                  pages in privileged contexts.<br>
+                  History APIs <code>history.pushState()</code> / <code>replaceState()</code> with attacker-controlled URLs can be used as part of
+                  complex DOM gadget chains when combined with other sinks.
+                </p>
+
+                <h3 class="h5 mt-3">Other dangerous assignments</h3>
+                <p class="mb-3">
+                  Manipulating script-related properties, for example <code>script.src</code> or <code>script.text</code>, with untrusted data can load
+                  or define attacker-supplied code.<br>
+                  Using CSS/DOM APIs like <code>element.style.cssText</code> or <code>style.backgroundImage</code> with attacker-controlled values can be
+                  abused in some browser/feature combinations, especially when combined with URL-based payloads or legacy features.
+                </p>
+
+                <h3 class="h5 mt-3">Safer alternatives</h3>
+                <p class="mb-0">
+                  Where possible, prefer text-only sinks like <code>textContent</code> or <code>innerText</code>, which treat input as literal text
+                  instead of HTML or code. Combined with strict input validation, output encoding, and Content Security Policy (including Trusted Types),
+                  this greatly reduces the exploitability of high-risk DOM sinks.
+                </p>
+              </div>
+            </div>
+
+            <!-- DOM Object Hijacking -->
+            <div class="card mb-4 shadow-sm border-0">
+              <div class="card-body p-4">
+                <h2 class="h4 mb-3">DOM Object Hijacking</h2>
+                <p class="mb-3">
+                  DOM object hijacking is a client‑side vulnerability where an attacker manipulates JavaScript‑exposed objects in the DOM
+                  so that legitimate code later uses those objects in a malicious, attacker‑controlled way. It is essentially “steering” existing
+                  front‑end logic by corrupting the data it trusts in the browser environment.
+                </p>
+
+                <h3 class="h5 mt-3">Core idea</h3>
+                <p class="mb-3">
+                  Modern apps keep lots of state in DOM‑reachable objects: configuration blobs, routing objects, user context, JSON responses,
+                  or values derived from <code>location</code>, storage, or messages. When any of these are controllable from outside
+                  (URL, <code>postMessage</code>, injected script, extension, etc.) and then consumed by security‑sensitive logic
+                  (navigation, templating, eval‑like behavior, API calls), the attacker can hijack that object’s contents to alter application behavior.
+                  This is conceptually close to DOM‑based XSS: untrusted data travels through a “DOM object” and ends up in a dangerous sink.
+                </p>
+
+                <h3 class="h5 mt-3">Typical patterns</h3>
+                <p class="mb-3">
+                  <strong>State / config object takeover:</strong> Global objects used for routing, feature flags, or widget config are filled or updated
+                  from <code>window.location</code>, fragment, or JSON without validation; hijacking them can redirect users, flip flags, or change endpoints.<br>
+                  <strong>JSON / data hijacking:</strong> Client reads server JSON into an object, then passes fields into HTML/JS sinks like
+                  <code>innerHTML</code>, <code>document.write()</code>, or <code>eval()</code>; if an attacker can control those fields
+                  (via upstream input or MITM on insecure transport), the object effectively becomes a vehicle for script injection.<br>
+                  <strong>Library / framework objects:</strong> Some DOM gadgets arise when libraries (for example, old jQuery patterns) take objects
+                  from <code>location</code> or hash and then feed them into selector or HTML APIs, letting an attacker control both selector and
+                  DOM injection target.
+                </p>
+
+                <h3 class="h5 mt-3">Security impact</h3>
+                <p class="mb-3">
+                  Once an attacker controls such objects, they can often:<br>
+                  Achieve DOM‑based XSS by steering values into execution/HTML sinks.<br>
+                  Force client‑side redirects or open phishing flows by corrupting navigation objects that write to <code>location</code>.<br>
+                  Exfiltrate data by modifying callback / handler objects that receive sensitive JSON or DOM references.
+                </p>
+
+                <h3 class="h5 mt-3">Hardening strategies</h3>
+                <p class="mb-0">
+                  Defending against DOM object hijacking means treating every object that can be influenced from outside as untrusted until proven otherwise.
+                  Validate and normalize all data from URL, storage, <code>postMessage</code>, and JSON before merging it into global state objects,
+                  and avoid piping object properties into high‑risk sinks (<code>innerHTML</code>, <code>eval</code>, <code>new Function</code>,
+                  <code>document.write</code>) without strict encoding or safer alternatives (<code>textContent</code>, safe templating).
+                </p>
+              </div>
+            </div>
+
+            <!-- Mitigation Strategies for DOM-Based Taint-Flow Issues -->
+            <div class="card mb-4 shadow-sm border-0">
+              <div class="card-body p-4">
+                <h2 class="h4 mb-3">Mitigation Strategies for DOM-Based Taint-Flow Issues</h2>
+                <p class="mb-3">
+                  Mitigating DOM-based taint‑flow issues means ensuring that attacker‑controllable data from DOM “sources” can never reach dangerous
+                  “sinks” without strict validation, encoding, or safe APIs.
+                </p>
+
+                <h3 class="h5 mt-3">1. Break unsafe source → sink paths</h3>
+                <p class="mb-3">
+                  Identify all untrusted sources such as <code>location</code> (search, hash), <code>document.referrer</code>, <code>postMessage</code>,
+                  cookies, <code>localStorage</code>, and user input elements.<br>
+                  For each source, ensure data never flows directly into high‑risk sinks (<code>innerHTML</code>, <code>outerHTML</code>,
+                  <code>insertAdjacentHTML</code>, <code>document.write</code>, <code>eval</code>, <code>new Function</code>,
+                  <code>setTimeout</code>/<code>setInterval</code> with strings, event handler attributes, <code>javascript:</code> URLs).
+                </p>
+
+                <h3 class="h5 mt-3">2. Prefer safe DOM APIs</h3>
+                <p class="mb-3">
+                  Use text‑only properties like <code>textContent</code> / <code>innerText</code> instead of <code>innerHTML</code> when rendering user data.<br>
+                  Use <code>createElement</code>, <code>setAttribute</code>, and property assignments instead of string‑built HTML, and avoid constructing
+                  script or event attributes dynamically.
+                </p>
+
+                <h3 class="h5 mt-3">3. Validate and sanitize untrusted data</h3>
+                <p class="mb-3">
+                  Apply strict input validation on client‑side data used for DOM updates, URLs, or logic (whitelists for expected formats like IDs,
+                  enums, numeric ranges).<br>
+                  For cases where HTML has to be accepted (e.g., rich text), sanitize with well‑maintained libraries such as DOMPurify
+                  before inserting into the DOM.
+                </p>
+
+                <h3 class="h5 mt-3">4. Use browser and platform protections</h3>
+                <p class="mb-3">
+                  Enforce a strong Content Security Policy (CSP) to disallow inline scripts and <code>unsafe-eval</code>, and to restrict script origins.<br>
+                  Consider CSP Trusted Types for critical apps to ensure only vetted code paths can create HTML/script strings for risky sinks.
+                </p>
+
+                <h3 class="h5 mt-3">5. Analyze and monitor taint flows</h3>
+                <p class="mb-3">
+                  Use developer tools and breakpoints to observe how data propagates from sources to sinks at runtime when testing for DOM XSS.<br>
+                  Integrate dynamic taint‑tracking or DOM‑aware scanners (e.g., browser‑based taint engines, DOM‑XSS‑focused tools
+                  like DOM Invader / research prototypes) into security testing pipelines to catch hidden flows.
+                </p>
+
+                <h3 class="h5 mt-3">6. Reduce client-side business logic reliance</h3>
+                <p class="mb-0">
+                  Avoid making critical security decisions purely in client‑side code that depends on attacker‑controllable DOM state; mirror
+                  or enforce checks on the server.<br>
+                  Regularly review third‑party scripts and client-side dependencies, as they can introduce new tainted flows and unsafe sinks
+                  outside first‑party control.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+<!-- DOM-Based Vulnerabilities Content End -->
+
+      
+        <!-- 404 End -->
+
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+            <div class="container py-5 border-start-0 border-end-0" style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-4">
+                        <div class="footer-item">
+                            <a href="index.html" class="p-0">
+                                <h4 class="text-white"><i></i>INFOSEC</h4>
+                                <!-- <img src="img/logo.png" alt="Logo"> -->
+                            </a>
+                            <p class="mb-4">Secure your web applications from end to end. Explore both server-side and client-side security strategies to protect your systems and users.</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-2">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Quick Links</h4>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Feature</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Blog</a>
+                            </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Support</h4>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ</a>
+                            </div>
+                    </div>
+                   
+            </div>
+        </div>
+        <!-- Footer End -->
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-md-0">
+                        <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>INFOSEC</a>, All right reserved.</span>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
+
+</html>
